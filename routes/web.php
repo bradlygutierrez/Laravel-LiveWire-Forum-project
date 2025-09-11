@@ -1,13 +1,27 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\Models\Blog;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/',[PageController::class, 'index'])->name('home'); 
+Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+
+Route::get('blog/',[BlogController::class,'show'])->name('blog.show');
+
+Route::get('blog/{post}', function (Blog $post) {
+    return view('blog_post.show', compact('post'));
+})->name('blog_post.show');
+
+
+Route::post('/answers/{question}', [AnswerController::class, 'store'])
+    ->name('answers.store');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
