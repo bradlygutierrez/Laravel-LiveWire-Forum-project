@@ -23,6 +23,9 @@ Route::get('blog/{post}', function (Blog $post) {
 Route::post('/answers/{question}', [AnswerController::class, 'store'])
     ->name('answers.store');
 
+Route::post('/answers/blog/{post}', [AnswerController::class, 'storeBlog'])
+    ->name('answers.store.blog');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

@@ -11,16 +11,23 @@
 
 <body>
 
-    <header class="bg-black w-full h-dvh gap-5 flex flex-col md:flex-row p-10">
-        <nav class="flex flex-col items-center justify-center text-center">
-            <h1 class="text-white font-bold text-4xl md:text-7xl font-sans mb-10">Welcome to Noob to Root</h1>
-            <h2 class="text-white text-3xl mb-2">Here I share my thoughts on various topics, mostly about software
-                engineer</h2>
-            <h4 class="text-white text-base">By Bradly Gutierrez</h4>
+    <header class="bg-black w-full h-dvh ">
+        <nav class="w-full h-16 pl-10 pr-10">
+            <x-w-e-b--l-a-r-a-v-e-l.layouts.navbar />
         </nav>
-        <nav class="w-full h-full">
-            <img src="./images/blogIlustration.png" alt="blog ilustration">
-        </nav>
+        <section class="gap-5 flex flex-col md:flex-row p-10">
+            <nav class="flex flex-col items-center justify-center text-center">
+
+                <h1 class="text-white font-bold text-4xl md:text-7xl font-sans mb-10">Welcome to Noob to Root</h1>
+                <h2 class="text-white text-3xl mb-2">Here I share my thoughts on various topics, mostly about software
+                    engineer</h2>
+                <h4 class="text-white text-base">By Bradly Gutierrez</h4>
+            </nav>
+            <nav class="w-full h-full">
+                <img src="./images/blogIlustration.png" alt="blog ilustration">
+            </nav>
+        </section>
+
 
 
     </header>
@@ -38,17 +45,17 @@
                         </p>
                         <a class="text-2xl font-bold text-white mb-2" href="{{ route('blog_post.show', $post->id) }}">
                             {{ $post->title }}</a>
-                            
+
                         {{-- Render JSON blocks --}}
-                       
-                       {{-- @foreach ($post->content as $block)
-                            @if ($block['type'] === 'paragraph')
-                                <p class="text-white/80 mb-2">{{ $block['text'] }}</p>
-                            @elseif ($block['type'] === 'image' && !empty($block['src']))
-                                <img src="{{ asset('storage\app/public' . $block['src']) }}" alt=""
-                                    class="my-4 rounded-lg shadow-lg max-w-full h-auto">
-                            @endif
-                        @endforeach --}} 
+
+                        {{-- @foreach ($post->content as $block)
+                        @if ($block['type'] === 'paragraph')
+                        <p class="text-white/80 mb-2">{{ $block['text'] }}</p>
+                        @elseif ($block['type'] === 'image' && !empty($block['src']))
+                        <img src="{{ asset('storage\app/public' . $block['src']) }}" alt=""
+                            class="my-4 rounded-lg shadow-lg max-w-full h-auto">
+                        @endif
+                        @endforeach --}}
 
                     </article>
                 @endforeach

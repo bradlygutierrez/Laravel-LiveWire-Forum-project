@@ -57,7 +57,7 @@
                                 <div class="flex items-start gap-2">
                                         <div style="color: #D3D3D3 ;">
                                                
-                                                <livewire:heart :heartable="$answer" /> 
+                                                <livewire:heart :heartable="$answer" wire:key="answer-comments-{{ $answer->id }}"/> 
                                         </div>
 
                                         <div>
@@ -70,7 +70,7 @@
                                                 </p>
 
                                                 <!-- Comments -->
-                                                <livewire:comment :commentable="$answer" />
+                                                <livewire:comment :commentable="$answer" wire:key="answer-comments-{{ $answer->id }}" />
 
                                                 <!-- Comments -->
                                         </div>

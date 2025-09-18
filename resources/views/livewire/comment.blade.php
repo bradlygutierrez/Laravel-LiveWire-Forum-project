@@ -21,7 +21,7 @@
                 </p>
 
                 <div style="color: #D3D3D3;">
-                   <livewire:heart :heartable="$comment" />
+                   <livewire:heart :heartable="$comment" wire:key="comment-heart-{{ $comment->id }}" />
                 </div>
             </li>
 
