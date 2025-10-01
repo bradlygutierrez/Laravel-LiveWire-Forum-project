@@ -11,10 +11,13 @@ class Comment extends Model
     /** @use HasFactory<\Database\Factories\CommentFactory> */
     use HasFactory,HasHeart;
     protected $fillable = ['user_id', 'content'];
-    public function user(){
-
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-   
+    public function commnetable(){
+        return $this->morphTo();
+    }
+
 }

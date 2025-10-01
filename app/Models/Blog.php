@@ -15,4 +15,27 @@ class Blog extends Model
     ];
 
     use HasFactory, HasProperties, HasHeart;
+
+    protected static function booted(){
+        static::deleting(function($blog){
+            $blog -> hearts()->delete();
+            $blog -> comments()->get()->each(function ($comment){
+                $comment -> hearts()-> delete();
+                $comment ->delete();
+            });
+
+            $blog -> answers()->get() -> each(function ($answer){
+                $answer -> hearts()-> delete();
+
+                $answer->comments()->get()->each(function ($comment){
+                    $comment -> hearts()-> delete();
+                    $comment -> delete();
+                });
+
+                $answer -> delete();
+            });
+
+
+        });
+    }
 }

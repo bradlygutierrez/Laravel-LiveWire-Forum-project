@@ -23,7 +23,7 @@
                                                 Edit
                                         </a>
 
-                                        <form action="#"
+                                        <form action="{{ route('question.destroy', $question) }}" method="POST"
                                                 onsubmit="return confirm('¿Estás seguro de eliminar esta pregunta?');">
                                                 @csrf
                                                 @method('DELETE')

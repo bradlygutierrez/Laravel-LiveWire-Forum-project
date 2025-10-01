@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
 
-Route::get('/',[PageController::class, 'index'])->name('home'); 
+Route::get('/',[PageController::class, 'index'])->name('home');
 Route::get('questions/{question}', [QuestionController::class, 'show'])->name('questions.show');
+Route::delete('questions/{question}', [QuestionController::class, 'destroy'])->name('question.destroy');
 
 Route::get('blog/',[BlogController::class,'show'])->name('blog.show');
 
 Route::get('blog/{post}', function (Blog $post) {
+    $post->content = json_decode($post->content, true); // 👈 this overrides Laravel's cast
     return view('blog_post.show', compact('post'));
 })->name('blog_post.show');
 
